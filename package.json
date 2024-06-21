@@ -1,6 +1,6 @@
 {
   "name": "yfinance-api-package",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description":"Node.js module for fetching historical stock market data from Yahoo Finance and saving it to CSV files.",
   "main": "index.js",
   "scripts": {
