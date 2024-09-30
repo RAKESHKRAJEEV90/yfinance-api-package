@@ -1,16 +1,27 @@
 {
   "name": "yfinance-api-package",
-  "version": "1.0.1",
-  "description":"Node.js module for fetching historical stock market data from Yahoo Finance and saving it to CSV files.",
-  "main": "index.js",
+  "version": "2.2.1",
+  "description": "Node.js module for fetching historical stock market data from Yahoo Finance and saving it to CSV files.",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RAKESHKRAJEEV90/yfinance-api-package.git"
+  },
   "author": "rk",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RAKESHKRAJEEV90/yfinance-api-package/issues"
+  },
+  "homepage": "https://github.com/RAKESHKRAJEEV90/yfinance-api-package#readme",
   "dependencies": {
-    "axios": "^1.7.2",
+    "axios": "^1.7.7",
+    "axios-cookiejar-support": "^5.0.3",
+    "cheerio": "^1.0.0",
     "date-fns": "^3.6.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "tough-cookie": "^5.0.0"
   }
 }

@@ -1,28 +1,31 @@
-#YahooFinance API Package
+# YahooFinance API Package
 
 YahooFinance API Package is a Node.js module for fetching historical stock market data from Yahoo Finance and saving it to CSV files.
 
-#Installation
+# Installation
 Install the package via npm:
 
 ```bash
 npm install yfinance-api-package
+```
 
-Features
+## Features
 
-Fetch Historical Data: Retrieve historical stock data for a specific date range.
-Fetch Today's Data: Fetch current day's stock data.
-Save Data to CSV: Save fetched data to CSV files for further analysis.
+- Fetch Historical Data: Retrieve historical stock data for a specific date range.
+- Fetch Today's Data: Fetch current day's stock data.
+- ave Data to CSV: Save fetched data to CSV files for further analysis.
 
-Usage
+## Usage
 
-Import the module and initialize an instance of YahooFinance:
+### Import the module and initialize an instance of YahooFinance:
 
-const YahooFinance = require('yahoo-finance-api');
+```bash
+const {YahooFinance} = require('yfinance-api-package');
 const yahooFinance = new YahooFinance();
+```
 
-Fetch Historical Data for a Specific Date
-
+### Fetch Historical Data for a Specific Date
+```bash
 async function fetchDataForDate() {
 
   const symbol = 'AAPL'; // Replace with your desired stock symbol
@@ -44,10 +47,10 @@ async function fetchDataForDate() {
 
 
 fetchDataForDate();
+```
 
-
-Fetch Today's Data
-
+### Fetch Today's Data
+```bash
 async function fetchDataForToday() {
 
   const symbol = 'SBIN.NS'; // Replace with your desired stock symbol
@@ -68,10 +71,10 @@ async function fetchDataForToday() {
 }
 
 fetchDataForToday();
+```
 
-
-Fetch Historical Data for a Specific Period
-
+### Fetch Historical Data for a Specific Period
+```bash
 async function fetchDataForDatesBetween() {
 
   const symbol = 'AAPL'; // Replace with your desired stock symbol
@@ -81,66 +84,68 @@ async function fetchDataForDatesBetween() {
   //interval is optional,by default its daily timeframe, you can add if needed.
 
   try {
-    const dataBetweenDate = await yahooFinance.fetchStockData(symbol, startDate, endDate, interval = '1d');
+     const dataBetweenDate = await yahooFinance.fetchStockData(symbol, startDate, endDate);
     if (dataBetweenDate) {
-      yahooFinance.saveDataToCSV(dataBetweenDate, `${symbol}_${date}.csv`);
-      console.log(`Data for ${date} saved to ${symbol}_${date}.csv`);
+      yahooFinance.saveDataToCSV(dataBetweenDate, `${symbol}_${startDate}_to_${endDate}.csv`);
+      console.log(`Data from ${startDate} to ${endDate} saved to ${symbol}_${startDate}_to_${endDate}.csv`);
     } else {
-      console.log(`No data available for ${date}`);
+      console.log(`No data available for the period from ${startDate} to ${endDate}`);
+   
     }
-
   } catch (error) {
     console.error(`Error fetching data for ${date}: ${error.message}`);
   }
 }
-
 fetchDataForDatesBetween();
+```
 
-Save Data to CSV (Optional)
+### Save Data to CSV (Optional)
 
 If you have fetched data and want to save it to CSV:
-
+```bash
 const data = 'Date,Open,High,Low,Close,Adj Close,Volume\n2023-12-29,194.14,194.66,193.17,193.58,193.33,34049900\n...';
 
 const filePath = 'AAPL_custom_data.csv'; // Replace with desired file path
 
 yahooFinance.saveDataToCSV(data, filePath);
 console.log(`Data saved to ${filePath}`);
+```
 
+# API Documentation
 
-#API Documentation
+## YahooFinance Class
 
-YahooFinance Class
+### Methods
 
-Methods
-
+```bash
 fetchStockData(symbol, startDate, endDate, interval = '1d'):
-
+```
 Fetches historical stock data for the specified symbol and date range.
-
+```bash
 downloadDataForDate(symbol, date):
-
+```
 Fetches historical stock data for a specific date.
-
+```bash
 downloadDataForToday(symbol):
-
+```
 Fetches today's stock data.
 
-
+```bash
 saveDataToCSV(data, filePath):
-
+```
 Saves provided data to a CSV file.
 
 
-Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit issues or pull requests.
 
 
-License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-Note: This package is created only for study purpose 
+## Note: 
+This package is created only for study purpose 
 
